@@ -22,8 +22,12 @@ def test_login_successful(driver, open_login_page):
     compare_url(driver, home_page.url)
 
 
-@pytest.mark.parametrize("input_text, expected_result", [([invalid_email_user["username"], invalid_password_user["password"]], invalid_email_user["message"]),
-                                                         ([invalid_email_user["username"], invalid_password_user["password"]], invalid_password_user["message"])])
+@pytest.mark.parametrize("input_text, expected_result", [([invalid_email_user["username"],
+                                                           invalid_password_user["password"]],
+                                                          invalid_email_user["message"]),
+                                                         ([invalid_email_user["username"],
+                                                           invalid_password_user["password"]],
+                                                          invalid_password_user["message"])])
 def test_login_invalid_credentials(driver, open_login_page, input_text, expected_result):
     # Verify that user cannot log in with invalid credentials
     login_page = LoginPage(driver)
