@@ -1,10 +1,3 @@
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
-
-from tests.E2E.config import timeout
-from tests.E2E.locators.common_page import CommonPageLocators
-from tests.E2E.locators.home_page import HomePageLocators
-from tests.E2E.page_object.common_page import CommonPage
 from tests.E2E.page_object.login_page import LoginPage
 from tests.E2E.locators.login_help_page import LoginHelpPageLocators
 

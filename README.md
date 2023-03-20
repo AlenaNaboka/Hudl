@@ -1,6 +1,14 @@
 # Hudl
-This is the test task implemented on Python using Gherkin syntax language. 
-Using BDD test architecture it's much easier to support tests and tark the coverage.
+Technical Task
+To cover by E2E tests implemented login functionality.
+
+Description
+For task implementation Python was used as automation language together with Selenium framework. 
+
+# Scenarios to test
+To the scenarios are included the following:
+ - Successful login with valid data
+ - Negative scenarios with invalid data (para)
 
 # Before you go
 
@@ -19,3 +27,5 @@ Please install on your local machine the following tech stack:
 `source venv/bin/activate`
 4. Execute the following command to install all required libraries:
 `pip install -r requirements.txt`
+5. From Hudl/tests/E2E/tests folder run the command `pytest -v` to run all the tests in the folder
+6. In 

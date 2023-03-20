@@ -1,5 +1,8 @@
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
+
 from tests.E2E.locators.common_page import CommonPageLocators
-from tests.E2E.config import base_url
+from tests.E2E.config import base_url, timeout
 
 
 class CommonPage:
@@ -12,8 +15,12 @@ class CommonPage:
 
     @property
     def login(self):
-        return self.driver.find_element(*CommonPageLocators.LOGIN_BUTTON)
+        return WebDriverWait(self.driver, timeout=timeout).until(
+            expected_conditions.presence_of_element_located(CommonPageLocators.LOGIN_BUTTON)
+        )
 
     @property
     def login_hudl(self):
-        return self.driver.find_element(*CommonPageLocators.LOGIN_HUDL_BUTTON)
+        return WebDriverWait(self.driver, timeout=timeout).until(
+            expected_conditions.presence_of_element_located(CommonPageLocators.LOGIN_HUDL_BUTTON)
+        )

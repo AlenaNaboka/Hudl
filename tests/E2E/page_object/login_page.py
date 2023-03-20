@@ -14,11 +14,13 @@ class LoginPage(CommonPage):
 
     @property
     def username(self):
-        return self.driver.find_element(*LoginPageLocators.USERNAME_FIELD)
+        return WebDriverWait(self.driver, timeout=timeout).until(
+            expected_conditions.presence_of_element_located(LoginPageLocators.USERNAME_FIELD))
 
     @property
     def password(self):
-        return self.driver.find_elements(*LoginPageLocators.PASSWORD_FIELD)[0]
+        return WebDriverWait(self.driver, timeout=timeout).until(
+            expected_conditions.presence_of_element_located(LoginPageLocators.PASSWORD_FIELD))
 
     @property
     def login_button(self):
@@ -30,15 +32,27 @@ class LoginPage(CommonPage):
 
     @property
     def need_help_link(self):
-        return WebDriverWait(self.driver, timeout=timeout).until(expected_conditions.presence_of_element_located(LoginPageLocators.NEED_HELP_LINK))
+        return WebDriverWait(self.driver, timeout=timeout).until(
+            expected_conditions.presence_of_element_located(LoginPageLocators.NEED_HELP_LINK)
+        )
+
+    @property
+    def go_back(self):
+        return WebDriverWait(self.driver, timeout=timeout).until(
+            expected_conditions.presence_of_element_located(LoginPageLocators.GO_BACK_BUTTON)
+        )
+
 
     @property
     def need_help_link_error(self):
-        # return self.driver.find_elements(*LoginPageLocators.NEED_HELP_LINK)
-        return WebDriverWait(self.driver, timeout=timeout).until(expected_conditions.presence_of_element_located(LoginPageLocators.NEED_HELP_LINK_ERROR))
+        return WebDriverWait(self.driver, timeout=timeout).until(
+            expected_conditions.presence_of_element_located(LoginPageLocators.NEED_HELP_LINK_ERROR)
+        )
 
     def error_message_check(self, error_message):
-        error_text = WebDriverWait(self.driver, timeout=timeout).until(expected_conditions.presence_of_element_located(LoginPageLocators.LOGIN_ERROR)).text
+        error_text = WebDriverWait(self.driver, timeout=timeout).until(
+            expected_conditions.presence_of_element_located(LoginPageLocators.LOGIN_ERROR)
+        ).text
         assert error_text == error_message
 
     def login_action(self, username, password):
